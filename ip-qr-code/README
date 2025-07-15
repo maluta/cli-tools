@@ -1,0 +1,20 @@
+This script retrieves the local machine’s IP address and generates a QR code image encoding that address,
+optionally wrapped with a user-defined prefix and/or suffix (for example, “http://” before or “:8080” after).
+It saves the resulting QR code as a PNG file (default “ip_qrcode.png”) and attempts to display it.
+
+Usage:
+    python ip_qrcode_generator.py [--prefix PREFIX] [--suffix SUFFIX] [--output OUTPUT_FILENAME]
+
+Options:
+    --prefix    Text to prepend to the IP address in the QR code (e.g., "http://")
+    --suffix    Text to append to the IP address in the QR code (e.g., ":8000")
+    --output    Filename for the generated PNG image (default: ip_qrcode.png)
+
+Functions:
+    get_ip_address()      Determine the local IP address by opening a UDP socket.
+    generate_qr_code()    Create a QR code image with optional text annotations and save/display it.
+    main()                Parse arguments, fetch IP, and invoke the QR code generation.
+
+Example:
+    $ python ip_qrcode_generator.py --prefix "http://" 
+    $ python ip_qrcode_generator.py --prefix "http://" --suffix ":5000" --output my_ip_qr.png
