@@ -1,0 +1,22 @@
+This script reads text from the system clipboard, prepends the fixed instruction
+"reescreva para deixar mais claro", URL-encodes the result, and opens chat.com in
+the default browser with the prompt passed as the ?q= query parameter.
+
+Usage:
+    python open-chat-to-rewrite.py
+
+It produces a URL of the form:
+    https://chat.com/?q=reescreva+para+deixar+mais+claro%0A%0A<your+clipboard+text>
+
+Functions:
+    get_clipboard_content()   Read the clipboard via wl-paste (Wayland).
+    build_query()             Prepend the rewrite instruction to the clipboard text.
+    build_url()               URL-encode the prompt onto the chat.com base URL.
+    main()                    Read clipboard, build the URL, and open the browser.
+
+Dependencies:
+    wl-clipboard (provides wl-paste). Install with: sudo apt-get install wl-clipboard
+    webbrowser and urllib.parse are part of the Python standard library.
+
+A convenience wrapper, open-chat-to-rewrite.sh, activates the ~/senv virtualenv and
+runs the script -- handy for binding to a keyboard shortcut.
