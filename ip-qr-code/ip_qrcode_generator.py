@@ -1,3 +1,9 @@
+# /// script
+# requires-python = ">=3.9"
+# dependencies = [
+#     "qrcode[pil]",
+# ]
+# ///
 """
 ip_qrcode_generator.py
 
@@ -6,7 +12,7 @@ optionally wrapped with a user-defined prefix and/or suffix (for example, “htt
 It saves the resulting QR code as a PNG file (default “ip_qrcode.png”) and attempts to display it.
 
 Usage:
-    python ip_qrcode_generator.py [--prefix PREFIX] [--suffix SUFFIX] [--output OUTPUT_FILENAME]
+    uv run ip_qrcode_generator.py [--prefix PREFIX] [--suffix SUFFIX] [--output OUTPUT_FILENAME]
 
 Options:
     --prefix    Text to prepend to the IP address in the QR code (e.g., "http://")
@@ -61,9 +67,11 @@ def generate_qr_code(data, prefix="", suffix="", output_path="ip_qrcode.png"):
     qr.add_data(full_data)
     qr.make(fit=True)
     
-    # Create an image from the QR code
-    qr_img = qr.make_image(fill_color="black", back_color="white")
-    
+    # Create an image from the QR code.
+    # make_image() returns a qrcode wrapper, not a raw PIL.Image, so unwrap it
+    # with get_image() before pasting/measuring.
+    qr_img = qr.make_image(fill_color="black", back_color="white").get_image()
+
     # Create a larger image with space for text
     width, height = qr_img.size
     img = Image.new('RGB', (width, height + 60), color='white')
