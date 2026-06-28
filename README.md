@@ -6,7 +6,7 @@ This script retrieves the local machine’s IP address and generates a QR code i
 optionally wrapped with a user-defined prefix and/or suffix.
 
 Example usage:
-`python ip_qrcode_generator.py --prefix "http://" --suffix ":5000" --output my_ip_qr.png`
+`uv run ip_qrcode_generator.py --prefix "http://" --suffix ":5000" --output my_ip_qr.png`
 
 
 2. `/url-cleaner`
@@ -14,7 +14,7 @@ Example usage:
 This script reads URL from clipboard, validates it, removes all query parameters, and saves back to clipboard.
 
 Example usage:
-`python url-cleaner.py`
+`uv run url-cleaner.py`
 
 
 3. `/open-chat-to-rewrite`

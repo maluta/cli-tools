@@ -26,18 +26,19 @@ cross-script dependency — each tool lives in its own directory, is run standal
 
 ## Running
 
-`ip_qrcode_generator.py` carries PEP 723 inline metadata (the `# /// script` block declaring `qrcode[pil]`).
-Run it with uv so dependencies resolve automatically:
+Every Python tool carries PEP 723 inline metadata (the `# /// script` block) and is run with `uv run`,
+which resolves dependencies and the interpreter automatically. `ip_qrcode_generator.py` declares
+`qrcode[pil]`; the url-cleaner and open-chat-to-rewrite scripts are stdlib-only (`dependencies = []`).
 
 ```
 uv run ip-qr-code/ip_qrcode_generator.py --prefix "http://" --suffix ":5000" --output my_ip_qr.png
 ```
 
-The url-cleaner scripts use only the Python stdlib but shell out to external clipboard tools — `xclip`
-(X11) or `wl-clipboard` (Wayland) must be installed:
+The url-cleaner scripts additionally shell out to external clipboard tools — `xclip` (X11) or
+`wl-clipboard` (Wayland) must be installed:
 
 ```
-python url-cleaner/url-cleaner-wayland.py
+uv run url-cleaner/url-cleaner-wayland.py
 ```
 
 There are no tests, linters, or build steps in this repo.
@@ -48,4 +49,5 @@ There are no tests, linters, or build steps in this repo.
   the cleaning/validation logic must be applied to **both** files to keep them in sync.
 - Each tool is fully self-contained; do not introduce shared modules or a top-level package — keep new tools
   as standalone scripts in their own directory with a short README, and add an entry to the root `README.md`.
-- The README's `python ip_qrcode_generator.py` example is stale; prefer `uv run` for that tool.
+- New tools should follow the same pattern: a PEP 723 `# /// script` block (empty `dependencies` if
+  stdlib-only) and a `.sh` wrapper that calls `uv run`. Use `uv run` in all docs and examples.

@@ -3,7 +3,7 @@ optionally wrapped with a user-defined prefix and/or suffix (for example, “htt
 It saves the resulting QR code as a PNG file (default “ip_qrcode.png”) and attempts to display it.
 
 Usage:
-    python ip_qrcode_generator.py [--prefix PREFIX] [--suffix SUFFIX] [--output OUTPUT_FILENAME]
+    uv run ip_qrcode_generator.py [--prefix PREFIX] [--suffix SUFFIX] [--output OUTPUT_FILENAME]
 
 Options:
     --prefix    Text to prepend to the IP address in the QR code (e.g., "http://")
@@ -16,5 +16,5 @@ Functions:
     main()                Parse arguments, fetch IP, and invoke the QR code generation.
 
 Example:
-    $ python ip_qrcode_generator.py --prefix "http://" 
-    $ python ip_qrcode_generator.py --prefix "http://" --suffix ":5000" --output my_ip_qr.png
+    $ uv run ip_qrcode_generator.py --prefix "http://"
+    $ uv run ip_qrcode_generator.py --prefix "http://" --suffix ":5000" --output my_ip_qr.png

@@ -25,7 +25,7 @@ Functions:
     main()                Parse arguments, fetch IP, and invoke the QR code generation.
 
 Example:
-    $ python ip_qrcode_generator.py --prefix "http://" --suffix ":5000" --output my_ip_qr.png
+    $ uv run ip_qrcode_generator.py --prefix "http://" --suffix ":5000" --output my_ip_qr.png
 """
 
 import socket
