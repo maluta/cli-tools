@@ -3,7 +3,7 @@ This script reads text from the system clipboard, prepends the fixed instruction
 the default browser with the prompt passed as the ?q= query parameter.
 
 Usage:
-    python open-chat-to-rewrite.py
+    uv run open-chat-to-rewrite.py
 
 It produces a URL of the form:
     https://chat.com/?q=reescreva+para+deixar+mais+claro%0A%0A<your+clipboard+text>
@@ -18,5 +18,5 @@ Dependencies:
     wl-clipboard (provides wl-paste). Install with: sudo apt-get install wl-clipboard
     webbrowser and urllib.parse are part of the Python standard library.
 
-A convenience wrapper, open-chat-to-rewrite.sh, activates the ~/senv virtualenv and
-runs the script -- handy for binding to a keyboard shortcut.
+A convenience wrapper, open-chat-to-rewrite.sh, runs the script via `uv run` --
+handy for binding to a keyboard shortcut.

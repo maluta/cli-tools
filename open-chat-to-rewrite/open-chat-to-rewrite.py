@@ -1,9 +1,18 @@
-#!/usr/bin/env python3
+# /// script
+# requires-python = ">=3.9"
+# dependencies = []
+# ///
 """
 Open Chat to Rewrite - Wayland Version
 Reads text from the clipboard, prepends a fixed rewrite instruction, and opens
 chat.com in the browser with the prompt passed as the ?q= query parameter.
 Uses wl-clipboard (wl-paste) for Wayland compatibility.
+
+Usage:
+    uv run open-chat-to-rewrite.py
+
+This script uses only the Python standard library, but the PEP 723 metadata
+block above lets `uv run` manage the interpreter and execution environment.
 """
 import subprocess
 import sys

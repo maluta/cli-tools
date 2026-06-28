@@ -22,6 +22,6 @@ Example usage:
 This script reads text from the clipboard, prepends the instruction "reescreva para deixar mais claro", and opens chat.com in the browser with the prompt as the `?q=` query parameter.
 
 Example usage:
-`python open-chat-to-rewrite.py`
+`uv run open-chat-to-rewrite.py`
 
 
